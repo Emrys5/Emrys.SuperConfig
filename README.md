@@ -1,2 +1,99 @@
 # Emrys.SuperConfig
-It is easier to use configuration in Web.config/App.config.在Web.config/App.config中更容易使用配置
+
+It is easier to use configuration in Web.config/App.config.
+
+## Get Started
+
+### 1.Configuration in Web.config/App.config
+```
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="userInfo" type="Emrys.SuperConfig.Section,Emrys.SuperConfig"></section>
+  </configSections>
+
+  <userInfo userName="Emrys" email="i@emrys.me" age="27">
+    <blogUrl>http://www.cnblogs.com/emrys5/</blogUrl>
+    <favoriteColor>Blue</favoriteColor>
+    <dislikeColor>2</dislikeColor>
+    <sports key='1' value='PingPong'></sports>
+    <language>
+      <value>Putonghua</value>
+      <value>Huaipu</value>
+      <value>English</value>
+    </language>
+    <family>
+      <item userName='lcz' email='xxx@qq.com' age='50'></item>
+      <item>
+        <userName>ly</userName>
+        <email>ly@qq.com</email>
+        <age>30</age>
+      </item>
+    </family>
+    <friends>
+      <friend userName='hx' email='xxx@qq.com' age='35'></friend>
+      <friend>
+        <userName>wy</userName>
+        <email>ly@qq.com</email>
+        <age>30</age>
+      </friend>
+    </friends>
+    <colleagues>
+      <colleague>
+        <key>1</key>
+        <value>
+          <userName>zfx</userName>
+          <email>wy@qq.com</email>
+          <age>100</age>
+        </value>
+      </colleague>
+      <colleague>
+        <key>2</key>
+        <value>
+          <userName>zk</userName>
+          <email>zk@qq.com</email>
+          <age>30</age>
+        </value>
+      </colleague>
+    </colleagues>
+  </userInfo>
+
+</configuration>
+```
+
+### 2.A new class name is UserInfo
+```
+class UserInfo
+{
+    public string UserName { get; set; }
+    public string Email { get; set; }
+    public int Age { get; set; }
+    public string BlogUrl { get; set; }
+    public Color FavoriteColor { get; set; }
+    public Color DislikeColor { get; set; }
+    public KeyValuePair<int, string> Sports { get; set; }
+    public List<string> Language { get; set; }
+    public List<UserInfo> Family { get; set; }
+    public UserInfo[] Friends { get; set; }
+    public Dictionary<int, UserInfo> Colleagues { get; set; } 
+}
+enum Color{Red,Blue,Black} 
+```
+
+### 3.Get config
+```
+ var user = SuperConfig<UserInfo>.Value;
+```
+
+Done!!!!!
+
+
+
+
+
+
+
+
+
+
+
