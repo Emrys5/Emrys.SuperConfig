@@ -11,7 +11,6 @@ It is easier to use configuration in Web.config/App.config.
   <configSections>
     <section name="userInfo" type="Emrys.SuperConfig.Section,Emrys.SuperConfig"></section>
   </configSections>
-
   <userInfo userName="Emrys" email="i@emrys.me" age="27">
     <blogUrl>http://www.cnblogs.com/emrys5/</blogUrl>
     <favoriteColor>Blue</favoriteColor>
