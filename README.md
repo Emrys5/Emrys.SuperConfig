@@ -1,8 +1,8 @@
 # Emrys.SuperConfig
 
-It is easier to use configuration in Web.config/App.config.
+It is easier to use configuration in .Net.
   
-在Web.config/App.config.更加容易的使用配置文件。
+在.Net更加容易的使用配置文件。
 
 ## Get Started
 
