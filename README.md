@@ -2,7 +2,7 @@
 
 It is easier to use configuration in .Net.
   
-在.Net更加容易的使用配置文件。
+在.Net中更加容易的使用配置文件。
 
 ## Get Started
 
