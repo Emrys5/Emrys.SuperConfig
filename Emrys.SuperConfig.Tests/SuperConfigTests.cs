@@ -40,6 +40,23 @@ namespace Emrys.SuperConfig.Tests
         }
 
         [TestMethod()]
+        public void TestListSimple()
+        {
+            var listString = SuperConfig.Mapping<List<string>>("listString");
+            Assert.AreEqual(listString.First(), "a");
+            Assert.AreEqual(listString.Count, 4);
+        }
+
+
+        [TestMethod()]
+        public void TestDictionarySimple()
+        {
+            var dic = SuperConfig.Mapping<Dictionary<int, string>>("dictionaryIntString");
+            Assert.AreEqual(dic.First().Key, 1);
+            Assert.AreEqual(dic.Last().Value, "b");
+        }
+
+        [TestMethod()]
         public void TestSetSectionName()
         {
             SuperConfig<UserInfo>.Setting("user");

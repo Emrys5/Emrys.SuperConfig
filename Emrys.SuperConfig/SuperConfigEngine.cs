@@ -54,13 +54,15 @@ namespace Emrys.SuperConfig
             // 获取mappinger选择器
             IMappinger mappinger = MappingerSelector.Get(type, convertCaseStrategy);
 
+            convertCaseStrategy = convertCaseStrategy ?? new DefaultConvertCaseStrategy();
+
             // 如果不是entity，直接执行返回值
             if (!(mappinger is EntityMappinger))
             {
+                mappinger.ConvertCaseStrategy = convertCaseStrategy;
                 return mappinger.Mapping(element, type);
             }
 
-            convertCaseStrategy = convertCaseStrategy ?? new DefaultConvertCaseStrategy();
 
             // 创建实例
             var instance = Activator.CreateInstance(type);
