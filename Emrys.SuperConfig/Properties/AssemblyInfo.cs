@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Emrys.SuperConfig")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("It is easier to use configuration in .Net/在.Net中更加容易的使用配置文件。")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Emrys")]
 [assembly: AssemblyProduct("Emrys.SuperConfig")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2018")]
+[assembly: AssemblyCopyright("Copyright © Emrys 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

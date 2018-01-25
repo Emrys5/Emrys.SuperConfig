@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/Emrys5/Emrys.SuperConfig/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Emrys5/Emrys.SuperConfig</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description> 
+    <copyright>Copyright 2018</copyright>
+    <tags>Emrys SuperConfig Web.config App.config Section Configuration easy config</tags>
+  </metadata>
+</package>
