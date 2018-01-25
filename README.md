@@ -4,7 +4,25 @@ It is easier to use configuration in Web.config/App.config.
 
 ## Get Started
 
-### 1.Configuration in Web.config/App.config
+
+### 1.A new class name is UserInfo
+```
+class UserInfo
+{
+    public string UserName { get; set; }
+    public string Email { get; set; }
+    public int Age { get; set; }
+    public string BlogUrl { get; set; }
+    public Color FavoriteColor { get; set; }
+    public Color DislikeColor { get; set; } 
+    public List<string> Language { get; set; }
+   
+}
+enum Color{Red,Blue,Black} 
+```
+
+
+### 2.Configuration in Web.config/App.config
 ```
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
@@ -22,22 +40,6 @@ It is easier to use configuration in Web.config/App.config.
     </language> 
   </userInfo> 
 </configuration>
-```
-
-### 2.A new class name is UserInfo
-```
-class UserInfo
-{
-    public string UserName { get; set; }
-    public string Email { get; set; }
-    public int Age { get; set; }
-    public string BlogUrl { get; set; }
-    public Color FavoriteColor { get; set; }
-    public Color DislikeColor { get; set; } 
-    public List<string> Language { get; set; }
-   
-}
-enum Color{Red,Blue,Black} 
 ```
 
 ### 3.Get config
