@@ -11,7 +11,7 @@ namespace Emrys.SuperConfig
     /// SuperClass class
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public static class SuperConfig<T>
+    public static class SuperConfig<T> where T : class, new()
     {
         private static readonly SuperConfigEngine _superConfigEngine = new SuperConfigEngine();
 
@@ -149,5 +149,29 @@ namespace Emrys.SuperConfig
             return (T)Mapping(typeof(T), element, convertCaseStrategy);
         }
 
+
+
+        private static ConcurrentDictionary<string, object> _dicSimpleType = new ConcurrentDictionary<string, object>();
+
+        public static T Mapping<T>(string sectionName, string filePath = null, Func<string, string> funcConvertCase = null, Func<string, string, IConvertCaseStrategy, Section> funcSection = null)
+        { 
+            if (!_dicSimpleType.ContainsKey(sectionName))
+            {
+                IConvertCaseStrategy convertCaseStrategy =
+              funcConvertCase == null
+              ? (IConvertCaseStrategy)new DefaultConvertCaseStrategy()
+              : new SettingConvertCaseStrategy(funcConvertCase);
+
+                ISuperConfigStrategy superConfigStrategy =
+                    funcSection == null
+                    ? (ISuperConfigStrategy)new DefaultSuperConfigStrategy(convertCaseStrategy)
+                    : new SettingSuperConfigStrategy(convertCaseStrategy, funcSection);
+
+                var value = _superConfigEngine.Mapping<T>(sectionName, filePath, superConfigStrategy);
+                _dicSimpleType.TryAdd(sectionName, value);
+            }
+
+            return (T)_dicSimpleType[sectionName];
+        }
     }
 }

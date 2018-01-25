@@ -139,10 +139,10 @@ namespace Emrys.SuperConfig.Tests
                            </sports>";
 
             KeyValuePair<int, string> keyValue = SuperConfig.Mapping<KeyValuePair<int, string>>(XElement.Parse(xml));
-
-
+             
             Assert.AreEqual(keyValue.Key, 1);
             Assert.AreEqual(keyValue.Value, "PingPong");
+             
         }
 
         [TestMethod]

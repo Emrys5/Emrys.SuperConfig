@@ -29,6 +29,17 @@ namespace Emrys.SuperConfig.Tests
         }
 
         [TestMethod()]
+        public void TestKeyValueAndSimpleTypeCache()
+        {
+            var sport = SuperConfig.Mapping<KeyValuePair<int, string>>("sport");
+            var superStar = SuperConfig.Mapping<KeyValuePair<int, string>>("superStar");
+            Assert.AreEqual(sport.Key, 2);
+            Assert.AreEqual(sport.Value, "Football");
+            Assert.AreEqual(superStar.Key, 7);
+            Assert.AreEqual(superStar.Value, "Jackchen");
+        }
+
+        [TestMethod()]
         public void TestSetSectionName()
         {
             SuperConfig<UserInfo>.Setting("user");
@@ -109,7 +120,7 @@ namespace Emrys.SuperConfig.Tests
         {
             var configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cfg", "SetSection.config");
 
-            SuperConfig<string[]>.Setting("arrayString", configFilePath, null, (sectionName, filePath, convertCaseStrategy) =>
+            var array = SuperConfig.Mapping<string[]>("arrayString", configFilePath, null, (sectionName, filePath, convertCaseStrategy) =>
             {
                 XElement xElement = XElement.Load(filePath);
                 var caseSectionName = convertCaseStrategy.ConvertCase(sectionName);
@@ -122,8 +133,6 @@ namespace Emrys.SuperConfig.Tests
                 return new Section() { XElement = sectionElement };
             });
 
-            var array = SuperConfig<string[]>.Value;
-
             Assert.AreEqual(array.First(), "a");
         }
 
@@ -133,14 +142,14 @@ namespace Emrys.SuperConfig.Tests
             var configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cfg", "SectionUserInfo.config");
 
             SuperConfig<UserInfo>.Setting(configFilePath, (sectionName, filePath, convertCaseStrategy) =>
-           { 
+           {
                return new Section() { XElement = XElement.Load(filePath) };
            });
 
             var user = SuperConfig<UserInfo>.Value;
-             
 
-            Assert.AreEqual(user.UserName, "SUEmrys"); 
+
+            Assert.AreEqual(user.UserName, "SUEmrys");
         }
 
 
