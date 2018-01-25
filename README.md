@@ -6,7 +6,10 @@ It is easier to use configuration in .Net.
 
 ## Get Started
 
-
+### 0. Install Package Emrys.SuperConfig
+```
+PM>Install-Package Emrys.SuperConfig
+```
 ### 1.A new class name is UserInfo
 ```
 class UserInfo
