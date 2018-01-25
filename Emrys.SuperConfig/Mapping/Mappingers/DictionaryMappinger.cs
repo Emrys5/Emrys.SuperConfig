@@ -16,8 +16,8 @@ namespace Emrys.SuperConfig.Mapping.Mappingers
     public class DictionaryMappinger : BaseMappinger, IMappinger
     {
 
-        const string keyName = "key";
-        const string valueName = "value";
+        const string keyName = "Key";
+        const string valueName = "Value";
 
         public object Mapping(XElement element, Type type)
         {
@@ -32,11 +32,14 @@ namespace Emrys.SuperConfig.Mapping.Mappingers
             var mappingerKey = MappingerSelector.Get(keyType, ConvertCaseStrategy);
             var mappingerValue = MappingerSelector.Get(valueType, ConvertCaseStrategy);
 
+            var convertCaseKeyName = ConvertCaseStrategy.ConvertCase(keyName);
+            var convertCaseValueName = ConvertCaseStrategy.ConvertCase(valueName);
+
             // 获取所有的element子项
             foreach (var item in element.Elements())
-            {
-                var key = GetValue(item, mappingerKey, keyType, keyName);
-                var value = GetValue(item, mappingerValue, valueType, valueName);
+            { 
+                var key = GetValue(item, mappingerKey, keyType, convertCaseKeyName);
+                var value = GetValue(item, mappingerValue, valueType, convertCaseValueName);
 
                 if (key != null && value != null)
                 {
